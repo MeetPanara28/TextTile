@@ -6,7 +6,8 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "finished_good_warehouse"
+  "finished_good_warehouse",
+  "company_list"
  ],
  "fields": [
   {
@@ -14,13 +15,19 @@
    "fieldtype": "Link",
    "label": "Finished Goods Warehouse",
    "options": "Warehouse"
+  },
+  {
+   "fieldname": "company_list",
+   "fieldtype": "Link",
+   "label": "Company List",
+   "options": "Company"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-07-10 10:55:25.468919",
+ "modified": "2026-07-10 12:35:50.796092",
  "modified_by": "Administrator",
  "module": "TextTile Project",
  "name": "Royal TextTile",
