@@ -1,1 +1,24 @@
-[]
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Gate Pass",
+  "enabled": 1,
+  "modified": "2026-07-13 11:56:38.868722",
+  "module": null,
+  "name": "Gate Pass Flow - Gate Pass",
+  "script": "frappe.ui.form.on('Gate Pass', {\n\trefresh: function(frm) {\n\t\tif (frm.doc.docstatus === 1 && frm.doc.reference_doctype && frm.doc.reference_name) {\n\t\t\tvar label = frm.doc.gate_pass_type === 'Outward' ? 'Go to Stock Entry' : 'Go to Receipt';\n\t\t\tfrm.add_custom_button(__(label), function() {\n\t\t\t\tfrappe.set_route('Form', frm.doc.reference_doctype, frm.doc.reference_name);\n\t\t\t}, __('Actions'));\n\t\t}\n\t},\n\ton_submit: function(frm) {\n\t\tif (frm.doc.reference_doctype && frm.doc.reference_name) {\n\t\t\tfrappe.call({\n\t\t\t\tmethod: 'texttile_project.texttile_project.api.submit_reference_document',\n\t\t\t\targs: {\n\t\t\t\t\tdoctype: frm.doc.reference_doctype,\n\t\t\t\t\tname: frm.doc.reference_name\n\t\t\t\t},\n\t\t\t\tfreeze: true,\n\t\t\t\tcallback: function(r) {\n\t\t\t\t\tif (r.message && r.message.status === 'success') {\n\t\t\t\t\t\tfrappe.msgprint({\n\t\t\t\t\t\t\ttitle: __('Gate Pass Approved'),\n\t\t\t\t\t\t\tindicator: 'green',\n\t\t\t\t\t\t\tmessage: __('Gate Pass approved. Linked {0} ({1}) has been automatically submitted.', [frm.doc.reference_doctype, frm.doc.reference_name])\n\t\t\t\t\t\t});\n\t\t\t\t\t\tsetTimeout(function() {\n\t\t\t\t\t\t\tfrappe.set_route('Form', frm.doc.reference_doctype, frm.doc.reference_name);\n\t\t\t\t\t\t}, 2500);\n\t\t\t\t\t} else {\n\t\t\t\t\t\tvar err_msg = (r.message && r.message.error) ? r.message.error : 'Unknown error';\n\t\t\t\t\t\tfrappe.msgprint({\n\t\t\t\t\t\t\ttitle: __('Auto-Submission Failed'),\n\t\t\t\t\t\t\tindicator: 'red',\n\t\t\t\t\t\t\tmessage: __('Gate Pass submitted, but linked {0} ({1}) could not be auto-submitted: {2}', [frm.doc.reference_doctype, frm.doc.reference_name, err_msg])\n\t\t\t\t\t\t});\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t});\n\t\t}\n\t}\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Stock Entry",
+  "enabled": 1,
+  "modified": "2026-07-13 11:56:38.862374",
+  "module": null,
+  "name": "Gate Pass Flow - Stock Entry",
+  "script": "frappe.ui.form.on('Stock Entry', {\n\tafter_save: function(frm) {\n\t\tif (frm.doc.docstatus === 0 && (frm.doc.purpose === 'Send to Subcontractor' || frm.doc.purpose === 'Material Transfer') && !frm.doc.custom_gate_pass) {\n\t\t\tfrappe.call({\n\t\t\t\tmethod: 'texttile_project.texttile_project.api.create_gate_pass_from_stock_entry',\n\t\t\t\targs: { stock_entry: frm.doc.name },\n\t\t\t\tfreeze: true,\n\t\t\t\tcallback: function(r) {\n\t\t\t\t\tif (r.message && r.message.gate_pass) {\n\t\t\t\t\t\tfrappe.set_route('Form', 'Gate Pass', r.message.gate_pass);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t});\n\t\t}\n\t},\n\tbefore_submit: function(frm) {\n\t\tif (frm.doc.purpose === 'Send to Subcontractor' || (frm.doc.purpose === 'Material Transfer' && frm.doc.custom_gate_pass)) {\n\t\t\tif (!frm.doc.custom_gate_pass) {\n\t\t\t\tfrappe.throw(__('Cannot submit Stock Entry without an approved Gate Pass.'));\n\t\t\t\tfrappe.validated = false;\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tfrappe.call({\n\t\t\t\tmethod: 'frappe.client.get_value',\n\t\t\t\targs: { doctype: 'Gate Pass', filters: { name: frm.doc.custom_gate_pass }, fieldname: 'status' },\n\t\t\t\tasync: false,\n\t\t\t\tcallback: function(r) {\n\t\t\t\t\tif (r.message && r.message.status !== 'Submitted') {\n\t\t\t\t\t\tfrappe.throw(__('Gate Pass {0} is in \"{1}\" state. Manager must Submit it first.', [frm.doc.custom_gate_pass, r.message.status]));\n\t\t\t\t\t\tfrappe.validated = false;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t});\n\t\t}\n\t}\n});",
+  "view": "Form"
+ }
+]

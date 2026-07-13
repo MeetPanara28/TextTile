@@ -142,8 +142,18 @@ doc_events = {
 	"Customer": {
 		"validate": "texttile_project.texttile_project.api.validate_customer_whatsapp",
 		"after_insert": "texttile_project.texttile_project.api.send_welcome_whatsapp"
+	},
+	"Gate Pass": {
+		"on_submit": "texttile_project.texttile_project.api.gate_pass_on_submit"
+	},
+	"Subcontracting Receipt": {
+		"before_submit": "texttile_project.texttile_project.api.filter_supplied_items_before_submit"
+	},
+	"Purchase Receipt": {
+		"before_submit": "texttile_project.texttile_project.api.filter_supplied_items_before_submit"
 	}
 }
+
 
 
 # Scheduled Tasks
@@ -261,18 +271,25 @@ doc_events = {
 # ignore_translatable_strings_from = []
 
 fixtures = [
+	# ── Custom Fields ─────────────────────────────────────────────────────────
 	{
 		"dt": "Custom Field",
 		"filters": [
-			["dt", "in", ["Customer", "Sales Order", "Vehicle", "Sales Order Item", "Delivery Note Item", "Sales Invoice Item"]]
+			["dt", "in", [
+				"Customer", "Sales Order", "Vehicle",
+				"Sales Order Item", "Delivery Note Item", "Sales Invoice Item",
+				# Gate Pass related custom fields
+				"Stock Entry", "Purchase Order", "Subcontracting Receipt", "Purchase Receipt"
+			]]
 		]
 	},
+	# ── Property Setters ──────────────────────────────────────────────────────
 	{
 		"dt": "Property Setter",
 		"filters": [
 			["doc_type", "in", [
-				"DMS Route", "DMS Beat", "DMS Beat Customer", "DMS Channel Type", "DMS Settings", 
-				"DMS Sales Visit", "DMS GPS Log", "DMS Field Collection", "DMS Return Claim", 
+				"DMS Route", "DMS Beat", "DMS Beat Customer", "DMS Channel Type", "DMS Settings",
+				"DMS Sales Visit", "DMS GPS Log", "DMS Field Collection", "DMS Return Claim",
 				"DMS Return Claim Item", "DMS Order Booking", "DMS Order Booking Item",
 				"DMS Scheme", "DMS Scheme Slab", "DMS Distributor Scheme Claim", "DMS Distributor Scheme Claim Item",
 				"DMS Price List Mapping", "DMS Van Assignment", "DMS Van Loading Sheet",
@@ -280,33 +297,43 @@ fixtures = [
 				"Customer", "Sales Order", "Sales Order Item", "Delivery Note", "Delivery Note Item", "Sales Invoice", "Sales Invoice Item", "Vehicle",
 				"DMS Beat Allocation",
 				"DMS Gate Pass", "DMS Gate Log", "DMS Vehicle Trip Log", "DMS Toll Entry",
-				"DMS Vehicle Fuel Log", "DMS Driver Expense Voucher"
+				"DMS Vehicle Fuel Log", "DMS Driver Expense Voucher",
+				# Gate Pass (subcontracting)
+				"Gate Pass", "Gate Pass Item"
 			]]
 		]
 	},
+	# ── Client Scripts ────────────────────────────────────────────────────────
 	{
 		"dt": "Client Script",
 		"filters": [
-			["dt", "in", ["Customer", "Sales Order"]]
+			["dt", "in", ["Customer", "Sales Order", "Gate Pass", "Stock Entry"]]
 		]
 	},
+	# ── Custom DocPerms ───────────────────────────────────────────────────────
 	{
 		"dt": "Custom DocPerm",
 		"filters": [
 			["parent", "in", [
 				"Customer", "Sales Order", "DMS Gate Pass", "DMS Gate Log", "DMS Vehicle Trip Log",
-				"DMS Toll Entry", "DMS Vehicle Fuel Log", "DMS Driver Expense Voucher"
+				"DMS Toll Entry", "DMS Vehicle Fuel Log", "DMS Driver Expense Voucher",
+				"Gate Pass", "Gate Pass Item"
 			]]
 		]
 	},
+	# ── Workspaces ────────────────────────────────────────────────────────────
 	{
 		"dt": "Workspace",
 		"filters": [
-			["name", "=", "DMS"]
+			["name", "in", ["DMS", "Main"]]
 		]
 	},
+	# ── Workflows ─────────────────────────────────────────────────────────────
 	"Workflow",
 	"Workflow State",
-	"DMS Channel Type"
+	"Workflow Action Master",
+	# ── Simple full-table exports ─────────────────────────────────────────────
+	"DMS Channel Type",
 ]
+
 
