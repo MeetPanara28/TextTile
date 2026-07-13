@@ -264,13 +264,24 @@ fixtures = [
 	{
 		"dt": "Custom Field",
 		"filters": [
-			["dt", "in", ["Customer", "Sales Order"]]
+			["dt", "in", ["Customer", "Sales Order", "Vehicle", "Sales Order Item", "Delivery Note Item", "Sales Invoice Item"]]
 		]
 	},
 	{
 		"dt": "Property Setter",
 		"filters": [
-			["doc_type", "in", ["Customer", "Sales Order"]]
+			["doc_type", "in", [
+				"DMS Route", "DMS Beat", "DMS Beat Customer", "DMS Channel Type", "DMS Settings", 
+				"DMS Sales Visit", "DMS GPS Log", "DMS Field Collection", "DMS Return Claim", 
+				"DMS Return Claim Item", "DMS Order Booking", "DMS Order Booking Item",
+				"DMS Scheme", "DMS Scheme Slab", "DMS Distributor Scheme Claim", "DMS Distributor Scheme Claim Item",
+				"DMS Price List Mapping", "DMS Van Assignment", "DMS Van Loading Sheet",
+				"DMS Van Loading Sheet Item", "DMS Van Unloading Sheet", "DMS Van Unloading Sheet Item", "DMS Van Unloading Visit",
+				"Customer", "Sales Order", "Sales Order Item", "Delivery Note", "Delivery Note Item", "Sales Invoice", "Sales Invoice Item", "Vehicle",
+				"DMS Beat Allocation",
+				"DMS Gate Pass", "DMS Gate Log", "DMS Vehicle Trip Log", "DMS Toll Entry",
+				"DMS Vehicle Fuel Log", "DMS Driver Expense Voucher"
+			]]
 		]
 	},
 	{
@@ -282,8 +293,20 @@ fixtures = [
 	{
 		"dt": "Custom DocPerm",
 		"filters": [
-			["parent", "in", ["Customer", "Sales Order"]]
+			["parent", "in", [
+				"Customer", "Sales Order", "DMS Gate Pass", "DMS Gate Log", "DMS Vehicle Trip Log",
+				"DMS Toll Entry", "DMS Vehicle Fuel Log", "DMS Driver Expense Voucher"
+			]]
 		]
-	}
+	},
+	{
+		"dt": "Workspace",
+		"filters": [
+			["name", "=", "DMS"]
+		]
+	},
+	"Workflow",
+	"Workflow State",
+	"DMS Channel Type"
 ]
 

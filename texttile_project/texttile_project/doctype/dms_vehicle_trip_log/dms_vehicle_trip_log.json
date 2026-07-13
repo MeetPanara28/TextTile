@@ -1,0 +1,283 @@
+{
+    "actions": [],
+    "allow_import": 1,
+    "autoname": "naming_series:",
+    "creation": "2026-07-13 10:00:00",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+        "sec_trip",
+        "col_t1",
+        "naming_series",
+        "vehicle",
+        "driver",
+        "van_assignment",
+        "gate_pass",
+        "col_t2",
+        "trip_date",
+        "beat",
+        "trip_status",
+        "sec_odo",
+        "col_o1",
+        "odometer_start",
+        "odometer_end",
+        "col_o2",
+        "total_km_driven",
+        "cost_per_km",
+        "sec_fuel",
+        "col_f1",
+        "total_fuel_qty",
+        "col_f2",
+        "total_fuel_cost",
+        "sec_toll",
+        "toll_details",
+        "total_toll_amount",
+        "sec_expenses",
+        "total_driver_expenses",
+        "total_trip_cost",
+        "sec_notes",
+        "remarks"
+    ],
+    "fields": [
+        {
+            "fieldname": "sec_trip",
+            "fieldtype": "Section Break",
+            "label": "Trip Information"
+        },
+        {
+            "fieldname": "col_t1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "DMS-TL-.YYYY.-.#####.",
+            "fieldname": "naming_series",
+            "fieldtype": "Select",
+            "label": "Series",
+            "options": "DMS-TL-.YYYY.-.#####.",
+            "reqd": 1
+        },
+        {
+            "fieldname": "vehicle",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Vehicle",
+            "options": "Vehicle",
+            "reqd": 1,
+            "search_index": 1
+        },
+        {
+            "fieldname": "driver",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Driver",
+            "options": "Driver",
+            "reqd": 1
+        },
+        {
+            "fieldname": "van_assignment",
+            "fieldtype": "Link",
+            "label": "Van Assignment",
+            "options": "DMS Van Assignment"
+        },
+        {
+            "fieldname": "gate_pass",
+            "fieldtype": "Link",
+            "label": "Gate Pass",
+            "options": "DMS Gate Pass"
+        },
+        {
+            "fieldname": "col_t2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "Today",
+            "fieldname": "trip_date",
+            "fieldtype": "Date",
+            "in_list_view": 1,
+            "label": "Trip Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "beat",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Beat / Route",
+            "options": "DMS Beat"
+        },
+        {
+            "bold": 1,
+            "default": "In Progress",
+            "fieldname": "trip_status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Status",
+            "options": "In Progress\nCompleted\nCancelled",
+            "reqd": 1
+        },
+        {
+            "fieldname": "sec_odo",
+            "fieldtype": "Section Break",
+            "label": "Odometer Readings"
+        },
+        {
+            "fieldname": "col_o1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "description": "Auto-filled from gate scan on exit",
+            "fieldname": "odometer_start",
+            "fieldtype": "Float",
+            "label": "Odometer at Exit (KM)"
+        },
+        {
+            "description": "Auto-filled from gate scan on entry",
+            "fieldname": "odometer_end",
+            "fieldtype": "Float",
+            "label": "Odometer at Return (KM)"
+        },
+        {
+            "fieldname": "col_o2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "bold": 1,
+            "fieldname": "total_km_driven",
+            "fieldtype": "Float",
+            "label": "Total KM Driven",
+            "read_only": 1
+        },
+        {
+            "fieldname": "cost_per_km",
+            "fieldtype": "Currency",
+            "label": "Cost Per KM",
+            "read_only": 1
+        },
+        {
+            "description": "Auto-aggregated from Vehicle Fuel Logs linked to this trip",
+            "fieldname": "sec_fuel",
+            "fieldtype": "Section Break",
+            "label": "Fuel Summary"
+        },
+        {
+            "fieldname": "col_f1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "total_fuel_qty",
+            "fieldtype": "Float",
+            "label": "Total Fuel (Litres)",
+            "read_only": 1
+        },
+        {
+            "fieldname": "total_fuel_cost",
+            "fieldtype": "Currency",
+            "label": "Total Fuel Cost",
+            "read_only": 1
+        },
+        {
+            "fieldname": "col_f2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "sec_toll",
+            "fieldtype": "Section Break",
+            "label": "Toll Tax Details"
+        },
+        {
+            "fieldname": "toll_details",
+            "fieldtype": "Table",
+            "label": "Toll Entries",
+            "options": "DMS Toll Entry"
+        },
+        {
+            "bold": 1,
+            "fieldname": "total_toll_amount",
+            "fieldtype": "Currency",
+            "label": "Total Toll Tax",
+            "read_only": 1
+        },
+        {
+            "fieldname": "sec_expenses",
+            "fieldtype": "Section Break",
+            "label": "Driver Expenses & Trip Total"
+        },
+        {
+            "description": "Auto-summed from Driver Expense Vouchers linked to this trip",
+            "fieldname": "total_driver_expenses",
+            "fieldtype": "Currency",
+            "label": "Total Driver Expenses",
+            "read_only": 1
+        },
+        {
+            "bold": 1,
+            "description": "Fuel + Toll + Driver Expenses",
+            "fieldname": "total_trip_cost",
+            "fieldtype": "Currency",
+            "label": "Total Trip Cost",
+            "read_only": 1
+        },
+        {
+            "fieldname": "sec_notes",
+            "fieldtype": "Section Break",
+            "label": "Remarks"
+        },
+        {
+            "fieldname": "remarks",
+            "fieldtype": "Small Text",
+            "label": "Remarks"
+        }
+    ],
+    "links": [
+        {
+            "link_doctype": "DMS Vehicle Fuel Log",
+            "link_fieldname": "trip_log"
+        },
+        {
+            "link_doctype": "DMS Driver Expense Voucher",
+            "link_fieldname": "trip_log"
+        }
+    ],
+    "modified": "2026-07-13 14:39:27.529937",
+    "modified_by": "Administrator",
+    "module": "TextTile Project",
+    "name": "DMS Vehicle Trip Log",
+    "naming_rule": "By \"Naming Series\" field",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "import": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "email": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "DMS Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "read": 1,
+            "report": 1,
+            "role": "DMS Sales Rep"
+        }
+    ],
+    "row_format": "Dynamic",
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "title_field": "vehicle",
+    "track_changes": 1
+}

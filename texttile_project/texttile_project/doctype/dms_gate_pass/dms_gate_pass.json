@@ -1,0 +1,210 @@
+{
+    "actions": [],
+    "autoname": "naming_series:",
+    "creation": "2026-07-13 10:00:00",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+        "sec_general",
+        "col_g1",
+        "naming_series",
+        "vehicle",
+        "driver",
+        "van_assignment",
+        "col_g2",
+        "pass_date",
+        "pass_type",
+        "valid_from",
+        "valid_until",
+        "status",
+        "sec_card",
+        "col_c1",
+        "card_id",
+        "col_c2",
+        "qr_code",
+        "sec_logs",
+        "gate_logs",
+        "sec_notes",
+        "remarks"
+    ],
+    "fields": [
+        {
+            "fieldname": "sec_general",
+            "fieldtype": "Section Break",
+            "label": "Pass Information"
+        },
+        {
+            "fieldname": "col_g1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "naming_series",
+            "fieldtype": "Select",
+            "label": "Series",
+            "options": "DMS-GP-.YYYY.-.#####.",
+            "default": "DMS-GP-.YYYY.-.#####.",
+            "reqd": 1
+        },
+        {
+            "fieldname": "vehicle",
+            "fieldtype": "Link",
+            "label": "Vehicle",
+            "options": "Vehicle",
+            "reqd": 1,
+            "in_list_view": 1,
+            "search_index": 1
+        },
+        {
+            "fieldname": "driver",
+            "fieldtype": "Link",
+            "label": "Driver",
+            "options": "Driver",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "van_assignment",
+            "fieldtype": "Link",
+            "label": "Van Assignment",
+            "options": "DMS Van Assignment",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "col_g2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "pass_date",
+            "fieldtype": "Date",
+            "label": "Pass Date",
+            "reqd": 1,
+            "in_list_view": 1,
+            "default": "Today"
+        },
+        {
+            "fieldname": "pass_type",
+            "fieldtype": "Select",
+            "label": "Pass Type",
+            "options": "Daily\nMulti-Day",
+            "default": "Daily",
+            "reqd": 1
+        },
+        {
+            "fieldname": "valid_from",
+            "fieldtype": "Datetime",
+            "label": "Valid From",
+            "reqd": 1
+        },
+        {
+            "fieldname": "valid_until",
+            "fieldtype": "Datetime",
+            "label": "Valid Until",
+            "reqd": 1
+        },
+        {
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "label": "Status",
+            "options": "Active\nExpired\nRevoked",
+            "default": "Active",
+            "reqd": 1,
+            "in_list_view": 1,
+            "bold": 1
+        },
+        {
+            "fieldname": "sec_card",
+            "fieldtype": "Section Break",
+            "label": "Card / QR Details"
+        },
+        {
+            "fieldname": "col_c1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "card_id",
+            "fieldtype": "Data",
+            "label": "Card / RFID / QR UID",
+            "description": "Unique ID of the physical card or QR code assigned to the vehicle",
+            "search_index": 1
+        },
+        {
+            "fieldname": "col_c2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "qr_code",
+            "fieldtype": "Attach Image",
+            "label": "QR Code",
+            "read_only": 1,
+            "description": "Auto-generated QR code for this gate pass"
+        },
+        {
+            "fieldname": "sec_logs",
+            "fieldtype": "Section Break",
+            "label": "Entry / Exit Log"
+        },
+        {
+            "fieldname": "gate_logs",
+            "fieldtype": "Table",
+            "label": "Gate Logs",
+            "options": "DMS Gate Log"
+        },
+        {
+            "fieldname": "sec_notes",
+            "fieldtype": "Section Break",
+            "label": "Remarks"
+        },
+        {
+            "fieldname": "remarks",
+            "fieldtype": "Small Text",
+            "label": "Remarks"
+        }
+    ],
+    "links": [
+        {
+            "link_doctype": "DMS Vehicle Trip Log",
+            "link_fieldname": "gate_pass"
+        }
+    ],
+    "modified": "2026-07-13 10:00:00",
+    "modified_by": "Administrator",
+    "module": "TextTile Project",
+    "name": "DMS Gate Pass",
+    "naming_rule": "By \"Naming Series\" field",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "import": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "email": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "DMS Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "read": 1,
+            "report": 1,
+            "role": "DMS Sales Rep"
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "title_field": "vehicle",
+    "track_changes": 1
+}

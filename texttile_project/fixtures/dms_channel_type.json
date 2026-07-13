@@ -1,0 +1,83 @@
+[
+ {
+  "channel_type_name": "Parent Test Channel",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "DMS Channel Type",
+  "is_warehouse_needed": 0,
+  "modified": "2026-06-30 10:31:15.051508",
+  "name": "Parent Test Channel"
+ },
+ {
+  "channel_type_name": "Child Test Channel",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "DMS Channel Type",
+  "is_warehouse_needed": 0,
+  "modified": "2026-06-30 10:31:15.214432",
+  "name": "Child Test Channel"
+ },
+ {
+  "channel_type_name": "Dealer",
+  "description": "Trading dealer/outlet partner",
+  "docstatus": 0,
+  "doctype": "DMS Channel Type",
+  "is_warehouse_needed": 0,
+  "modified": "2026-07-13 14:58:52.788333",
+  "name": "Dealer"
+ },
+ {
+  "channel_type_name": "Distributor",
+  "description": "Primary geographic distributor",
+  "docstatus": 0,
+  "doctype": "DMS Channel Type",
+  "is_warehouse_needed": 1,
+  "modified": "2026-07-13 14:58:52.788932",
+  "name": "Distributor"
+ },
+ {
+  "channel_type_name": "Franchise",
+  "description": "Franchise partner",
+  "docstatus": 0,
+  "doctype": "DMS Channel Type",
+  "is_warehouse_needed": 0,
+  "modified": "2026-07-13 14:58:52.790753",
+  "name": "Franchise"
+ },
+ {
+  "channel_type_name": "Stockist",
+  "description": "Sub-distributor/stockist",
+  "docstatus": 0,
+  "doctype": "DMS Channel Type",
+  "is_warehouse_needed": 1,
+  "modified": "2026-07-13 14:58:52.791897",
+  "name": "Stockist"
+ },
+ {
+  "channel_type_name": "Institution",
+  "description": "Large institution customer (e.g. school, hotel)",
+  "docstatus": 0,
+  "doctype": "DMS Channel Type",
+  "is_warehouse_needed": 0,
+  "modified": "2026-07-13 14:58:52.793067",
+  "name": "Institution"
+ },
+ {
+  "channel_type_name": "MANUFACTURER (HQ)",
+  "description": "Global or country headquarters manufacturer entity",
+  "docstatus": 0,
+  "doctype": "DMS Channel Type",
+  "is_warehouse_needed": 0,
+  "modified": "2026-07-13 14:58:52.787634",
+  "name": "MANUFACTURER (HQ)"
+ },
+ {
+  "channel_type_name": "Retailer",
+  "description": "Retail outlet shopkeeper",
+  "docstatus": 0,
+  "doctype": "DMS Channel Type",
+  "is_warehouse_needed": 0,
+  "modified": "2026-07-13 14:58:52.792504",
+  "name": "Retailer"
+ }
+]

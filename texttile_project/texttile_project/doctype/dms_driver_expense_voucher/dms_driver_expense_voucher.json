@@ -1,0 +1,207 @@
+{
+    "actions": [],
+    "autoname": "naming_series:",
+    "creation": "2026-07-13 10:00:00",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+        "sec_info",
+        "col_i1",
+        "naming_series",
+        "driver",
+        "vehicle",
+        "trip_log",
+        "gate_pass",
+        "col_i2",
+        "expense_date",
+        "expense_category",
+        "description",
+        "amount",
+        "payment_mode",
+        "bill_number",
+        "bill_attachment",
+        "sec_approval",
+        "col_a1",
+        "approval_status",
+        "approved_by",
+        "col_a2",
+        "remarks"
+    ],
+    "fields": [
+        {
+            "fieldname": "sec_info",
+            "fieldtype": "Section Break",
+            "label": "Expense Information"
+        },
+        {
+            "fieldname": "col_i1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "naming_series",
+            "fieldtype": "Select",
+            "label": "Series",
+            "options": "DMS-DEV-.YYYY.-.#####.",
+            "default": "DMS-DEV-.YYYY.-.#####.",
+            "reqd": 1
+        },
+        {
+            "fieldname": "driver",
+            "fieldtype": "Link",
+            "label": "Driver",
+            "options": "Driver",
+            "reqd": 1,
+            "in_list_view": 1,
+            "search_index": 1
+        },
+        {
+            "fieldname": "vehicle",
+            "fieldtype": "Link",
+            "label": "Vehicle",
+            "options": "Vehicle",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "trip_log",
+            "fieldtype": "Link",
+            "label": "Trip Log",
+            "options": "DMS Vehicle Trip Log"
+        },
+        {
+            "fieldname": "gate_pass",
+            "fieldtype": "Link",
+            "label": "Gate Pass",
+            "options": "DMS Gate Pass"
+        },
+        {
+            "fieldname": "col_i2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "expense_date",
+            "fieldtype": "Date",
+            "label": "Expense Date",
+            "reqd": 1,
+            "in_list_view": 1,
+            "default": "Today"
+        },
+        {
+            "fieldname": "expense_category",
+            "fieldtype": "Select",
+            "label": "Expense Category",
+            "options": "Vehicle Repair\nTyre Puncture\nParking Charges\nFood Allowance\nEmergency Fuel\nLoading / Unloading Help\nOther",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "description",
+            "fieldtype": "Small Text",
+            "label": "Description",
+            "description": "What was purchased or what work was done"
+        },
+        {
+            "fieldname": "amount",
+            "fieldtype": "Currency",
+            "label": "Amount",
+            "reqd": 1,
+            "in_list_view": 1,
+            "bold": 1
+        },
+        {
+            "fieldname": "payment_mode",
+            "fieldtype": "Select",
+            "label": "Payment Mode",
+            "options": "Cash Advance\nReimbursement",
+            "default": "Cash Advance"
+        },
+        {
+            "fieldname": "bill_number",
+            "fieldtype": "Data",
+            "label": "Bill / Receipt No."
+        },
+        {
+            "fieldname": "bill_attachment",
+            "fieldtype": "Attach",
+            "label": "Bill Attachment"
+        },
+        {
+            "fieldname": "sec_approval",
+            "fieldtype": "Section Break",
+            "label": "Approval"
+        },
+        {
+            "fieldname": "col_a1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "approval_status",
+            "fieldtype": "Select",
+            "label": "Approval Status",
+            "options": "Pending\nApproved\nRejected",
+            "default": "Pending",
+            "reqd": 1,
+            "in_list_view": 1,
+            "bold": 1
+        },
+        {
+            "fieldname": "approved_by",
+            "fieldtype": "Link",
+            "label": "Approved By",
+            "options": "User",
+            "read_only": 1
+        },
+        {
+            "fieldname": "col_a2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "remarks",
+            "fieldtype": "Small Text",
+            "label": "Remarks"
+        }
+    ],
+    "links": [],
+    "modified": "2026-07-13 10:00:00",
+    "modified_by": "Administrator",
+    "module": "TextTile Project",
+    "name": "DMS Driver Expense Voucher",
+    "naming_rule": "By \"Naming Series\" field",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "import": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "email": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "DMS Manager",
+            "share": 1,
+            "write": 1,
+            "amend": 1
+        },
+        {
+            "create": 1,
+            "read": 1,
+            "write": 1,
+            "role": "DMS Sales Rep"
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "title_field": "driver",
+    "track_changes": 1
+}

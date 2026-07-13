@@ -1,0 +1,67 @@
+{
+    "actions": [],
+    "creation": "2026-07-13 10:00:00",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+        "toll_point",
+        "vehicle_class",
+        "toll_amount",
+        "payment_mode",
+        "receipt_number",
+        "toll_time"
+    ],
+    "fields": [
+        {
+            "fieldname": "toll_point",
+            "fieldtype": "Data",
+            "label": "Toll Point / Plaza",
+            "in_list_view": 1,
+            "reqd": 1
+        },
+        {
+            "fieldname": "vehicle_class",
+            "fieldtype": "Select",
+            "label": "Vehicle Class",
+            "options": "Light Commercial Vehicle\nHeavy Commercial Vehicle\nBus\nTractor\nOther",
+            "default": "Light Commercial Vehicle",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "toll_amount",
+            "fieldtype": "Currency",
+            "label": "Toll Amount",
+            "in_list_view": 1,
+            "reqd": 1
+        },
+        {
+            "fieldname": "payment_mode",
+            "fieldtype": "Select",
+            "label": "Payment Mode",
+            "options": "Cash\nFASTag\nCard",
+            "default": "FASTag",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "receipt_number",
+            "fieldtype": "Data",
+            "label": "Receipt No."
+        },
+        {
+            "fieldname": "toll_time",
+            "fieldtype": "Datetime",
+            "label": "Toll Time"
+        }
+    ],
+    "istable": 1,
+    "links": [],
+    "modified": "2026-07-13 10:00:00",
+    "modified_by": "Administrator",
+    "module": "TextTile Project",
+    "name": "DMS Toll Entry",
+    "owner": "Administrator",
+    "permissions": [],
+    "sort_field": "modified",
+    "sort_order": "DESC"
+}

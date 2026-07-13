@@ -1,0 +1,248 @@
+{
+    "actions": [],
+    "autoname": "naming_series:",
+    "creation": "2026-07-13 10:00:00",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+        "sec_info",
+        "col_i1",
+        "naming_series",
+        "vehicle",
+        "driver",
+        "trip_log",
+        "gate_pass",
+        "col_i2",
+        "fuel_date",
+        "fuel_time",
+        "petrol_pump_name",
+        "bill_number",
+        "bill_attachment",
+        "sec_fuel",
+        "col_fl1",
+        "fuel_type",
+        "quantity_litres",
+        "rate_per_litre",
+        "total_fuel_cost",
+        "col_fl2",
+        "odometer_at_fill",
+        "last_odometer",
+        "km_since_last_fill",
+        "mileage_kmpl",
+        "sec_payment",
+        "col_p1",
+        "payment_mode",
+        "paid_by"
+    ],
+    "fields": [
+        {
+            "fieldname": "sec_info",
+            "fieldtype": "Section Break",
+            "label": "Fuel Log Information"
+        },
+        {
+            "fieldname": "col_i1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "naming_series",
+            "fieldtype": "Select",
+            "label": "Series",
+            "options": "DMS-FL-.YYYY.-.#####.",
+            "default": "DMS-FL-.YYYY.-.#####.",
+            "reqd": 1
+        },
+        {
+            "fieldname": "vehicle",
+            "fieldtype": "Link",
+            "label": "Vehicle",
+            "options": "Vehicle",
+            "reqd": 1,
+            "in_list_view": 1,
+            "search_index": 1
+        },
+        {
+            "fieldname": "driver",
+            "fieldtype": "Link",
+            "label": "Driver",
+            "options": "Driver",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "trip_log",
+            "fieldtype": "Link",
+            "label": "Trip Log",
+            "options": "DMS Vehicle Trip Log"
+        },
+        {
+            "fieldname": "gate_pass",
+            "fieldtype": "Link",
+            "label": "Gate Pass",
+            "options": "DMS Gate Pass"
+        },
+        {
+            "fieldname": "col_i2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "fuel_date",
+            "fieldtype": "Date",
+            "label": "Date",
+            "reqd": 1,
+            "in_list_view": 1,
+            "default": "Today"
+        },
+        {
+            "fieldname": "fuel_time",
+            "fieldtype": "Time",
+            "label": "Time"
+        },
+        {
+            "fieldname": "petrol_pump_name",
+            "fieldtype": "Data",
+            "label": "Petrol Pump / Station"
+        },
+        {
+            "fieldname": "bill_number",
+            "fieldtype": "Data",
+            "label": "Receipt / Bill No."
+        },
+        {
+            "fieldname": "bill_attachment",
+            "fieldtype": "Attach",
+            "label": "Bill Attachment"
+        },
+        {
+            "fieldname": "sec_fuel",
+            "fieldtype": "Section Break",
+            "label": "Fuel Details"
+        },
+        {
+            "fieldname": "col_fl1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "fuel_type",
+            "fieldtype": "Select",
+            "label": "Fuel Type",
+            "options": "Petrol\nDiesel\nCNG\nElectric",
+            "default": "Diesel",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "quantity_litres",
+            "fieldtype": "Float",
+            "label": "Quantity (Litres)",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "rate_per_litre",
+            "fieldtype": "Currency",
+            "label": "Rate Per Litre",
+            "reqd": 1
+        },
+        {
+            "fieldname": "total_fuel_cost",
+            "fieldtype": "Currency",
+            "label": "Total Fuel Cost",
+            "read_only": 1,
+            "bold": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "col_fl2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "odometer_at_fill",
+            "fieldtype": "Float",
+            "label": "Odometer at Fill (KM)"
+        },
+        {
+            "fieldname": "last_odometer",
+            "fieldtype": "Float",
+            "label": "Previous Odometer (KM)",
+            "read_only": 1,
+            "description": "Auto-fetched from previous fuel log for this vehicle"
+        },
+        {
+            "fieldname": "km_since_last_fill",
+            "fieldtype": "Float",
+            "label": "KM Since Last Fill",
+            "read_only": 1
+        },
+        {
+            "fieldname": "mileage_kmpl",
+            "fieldtype": "Float",
+            "label": "Mileage (KM/L)",
+            "read_only": 1,
+            "bold": 1
+        },
+        {
+            "fieldname": "sec_payment",
+            "fieldtype": "Section Break",
+            "label": "Payment"
+        },
+        {
+            "fieldname": "col_p1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "payment_mode",
+            "fieldtype": "Select",
+            "label": "Payment Mode",
+            "options": "Cash\nCompany Card\nCredit",
+            "default": "Cash"
+        },
+        {
+            "fieldname": "paid_by",
+            "fieldtype": "Link",
+            "label": "Paid By",
+            "options": "Employee"
+        }
+    ],
+    "links": [],
+    "modified": "2026-07-13 10:00:00",
+    "modified_by": "Administrator",
+    "module": "TextTile Project",
+    "name": "DMS Vehicle Fuel Log",
+    "naming_rule": "By \"Naming Series\" field",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "import": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "email": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "DMS Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "read": 1,
+            "role": "DMS Sales Rep"
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "title_field": "vehicle",
+    "track_changes": 1
+}
