@@ -138,13 +138,13 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Customer": {
+		"validate": "texttile_project.texttile_project.api.validate_customer_whatsapp",
+		"after_insert": "texttile_project.texttile_project.api.send_welcome_whatsapp"
+	}
+}
+
 
 # Scheduled Tasks
 # ---------------
@@ -207,6 +207,10 @@ app_license = "mit"
 # ----------------
 # before_request = ["texttile_project.utils.before_request"]
 # after_request = ["texttile_project.utils.after_request"]
+
+
+
+
 
 # Job Events
 # ----------
